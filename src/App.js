@@ -41,7 +41,7 @@ const fetchLeaves = async () => {
   try {
 
     const response = await axios.get(
-      "http://employee-tracker-server-production.up.railway.app/api/leave/leaves"
+      "https://employee-tracker-server-production.up.railway.app/api/leave/leaves"
     );
 
     setLeaveRequests(response.data);
@@ -184,7 +184,7 @@ const loginAdmin = async () => {
     const response =
       await axios.post(
 
-        "http://employee-tracker-server-production.up.railway.app/api/admin/login",
+        "https://employee-tracker-server-production.up.railway.app/api/admin/login",
 
         {
           email,
@@ -250,7 +250,7 @@ const loginAdmin = async () => {
 
       const response =
         await axios.post(
-          "http://employee-tracker-server-production.up.railway.app/api/employee/create",
+          "https://employee-tracker-server-production.up.railway.app/api/employee/create",
           {
             employeeName,
             designation,
@@ -291,7 +291,7 @@ const loginAdmin = async () => {
 
       const response =
         await axios.get(
-          "http://employee-tracker-server-production.up.railway.app/api/employee/all"
+          "https://employee-tracker-server-production.up.railway.app/api/employee/all"
         );
 
       setEmployees(response.data);
@@ -314,7 +314,7 @@ const loginAdmin = async () => {
 
       const response =
         await axios.delete(
-          `http://employee-tracker-server-production.up.railway.app/api/employee/delete/${id}`
+          `https://employee-tracker-server-production.up.railway.app/api/employee/delete/${id}`
         );
 
       alert(response.data.message);
@@ -337,7 +337,7 @@ const loginAdmin = async () => {
 
       const response =
         await axios.put(
-          `http://employee-tracker-server-production.up.railway.app/api/employee/update/${selectedEmployee._id}`,
+          `https://employee-tracker-server-production.up.railway.app/api/employee/update/${selectedEmployee._id}`,
           {
             employeeName,
             designation,
@@ -587,7 +587,7 @@ const saveAdminProfile = async () => {
     const response =
       await axios.put(
 
-        `http://employee-tracker-server-production.up.railway.app/api/admin/update/${adminId}`,
+        `https://employee-tracker-server-production.up.railway.app/api/admin/update/${adminId}`,
 
         formData,
 
@@ -828,7 +828,7 @@ const saveAdminProfile = async () => {
           <img
             src={
               adminData?.profileImage
-                ? `http://employee-tracker-server-production.up.railway.app/uploads/${adminData.profileImage}`
+                ? `https://employee-tracker-server-production.up.railway.app/uploads/${adminData.profileImage}`
                 : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
             }
             alt="admin"
@@ -2301,7 +2301,7 @@ const saveAdminProfile = async () => {
   try {
 
     const response = await axios.put(
-      `http://employee-tracker-server-production.up.railway.app/api/leave/approve-leave/${id}`
+      `https://employee-tracker-server-production.up.railway.app/api/leave/approve-leave/${id}`
     );
 
     alert(response.data.message);
@@ -2323,7 +2323,7 @@ const saveAdminProfile = async () => {
   try {
 
     const response = await axios.put(
-      `http://employee-tracker-server-production.up.railway.app/api/leave/reject-leave/${id}`
+      `https://employee-tracker-server-production.up.railway.app/api/leave/reject-leave/${id}`
     );
 
     alert(response.data.message);
