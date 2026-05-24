@@ -136,9 +136,7 @@ const [
   setSelectedMonth,
 ] = useState("");
 
-const [
-  attendanceData,
-] = useState([]);
+const [attendanceData, setAttendanceData] = useState([]);
 
 /* =========================
    LEAVE STATES
