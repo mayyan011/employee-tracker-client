@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
+import { FaUserCircle, FaEnvelope, FaLock } from "react-icons/fa";
 
 function App() {
 
@@ -415,124 +416,113 @@ const loginAdmin = async () => {
     return (
 
       <div
-        style={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          background: "#f3f4f6",
-        }}
-      >
-
-        <div
-          style={{
-            width: "400px",
-            background: "white",
-            padding: "30px",
-            borderRadius: "12px",
-            boxShadow:
-              "0 0 10px rgba(0,0,0,0.1)",
-          }}
-        >
-
-          <h1
-            style={{
-              textAlign: "center",
-              marginBottom: "30px",
-            }}
-          >
-            Admin Login
-          </h1>
-
-          <input
-            type="email"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(e) =>
-              setEmail(e.target.value)
-            }
-            onKeyDown={(e) => {
-
-    if (e.key === "Enter") {
-
-      loginAdmin();
-
-    }
-
+  style={{
+    minHeight: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    background: "#eef2ff",
   }}
-            style={inputStyle}
-          />
+>
+  <div
+    style={{
+      width: "450px",
+      background: "#dbe5ff",
+      padding: "40px",
+      borderRadius: "25px",
+      boxShadow: "0 5px 20px rgba(0,0,0,0.15)",
+    }}
+  >
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        marginBottom: "20px",
+      }}
+    >
+      <FaUserCircle size={90} color="#3b6df6" />
+    </div>
 
-          <div
-            style={{
-              position: "relative",
-              marginBottom: "20px",
-            }}
-          >
+    <h1
+      style={{
+        textAlign: "center",
+        marginBottom: "30px",
+        color: "#1f2937",
+      }}
+    >
+      Admin Login
+    </h1>
 
-            <input
-              type={
-                showPassword
-                  ? "text"
-                  : "password"
-              }
-              placeholder="Enter Password"
-              value={password}
-              onChange={(e) =>
-                setPassword(e.target.value)
-              }
-              onKeyDown={(e) => {
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        background: "#fff",
+        padding: "15px",
+        borderRadius: "15px",
+        marginBottom: "20px",
+      }}
+    >
+      <FaEnvelope color="gray" />
+      <input
+        type="email"
+        placeholder="Enter Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        style={{
+          border: "none",
+          outline: "none",
+          marginLeft: "10px",
+          width: "100%",
+          fontSize: "16px",
+        }}
+      />
+    </div>
 
-  if (e.key === "Enter") {
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        background: "#fff",
+        padding: "15px",
+        borderRadius: "15px",
+        marginBottom: "30px",
+      }}
+    >
+      <FaLock color="gray" />
 
-    loginAdmin();
+      <input
+        type="password"
+        placeholder="Enter Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        style={{
+          border: "none",
+          outline: "none",
+          marginLeft: "10px",
+          width: "100%",
+          fontSize: "16px",
+        }}
+      />
+    </div>
 
-  }
-
-}}
-              style={inputStyle}
-            />
-
-            <span
-              onClick={() =>
-                setShowPassword(
-                  !showPassword
-                )
-              }
-              style={{
-                position: "absolute",
-                right: "15px",
-                top: "12px",
-                cursor: "pointer",
-                fontSize: "14px",
-                color: "#555",
-              }}
-            >
-              {showPassword
-                ? "Hide"
-                : "Show"}
-            </span>
-
-          </div>
-
-          <button
-            onClick={loginAdmin}
-            style={{
-              width: "100%",
-              padding: "12px",
-              background: "#2563eb",
-              color: "white",
-              border: "none",
-              borderRadius: "8px",
-              cursor: "pointer",
-            }}
-          >
-            Login
-          </button>
-
-        </div>
-
-      </div>
+    <button
+      onClick={loginUser}
+      style={{
+        width: "100%",
+        padding: "15px",
+        border: "none",
+        borderRadius: "15px",
+        background: "#3b6df6",
+        color: "#fff",
+        fontSize: "18px",
+        cursor: "pointer",
+      }}
+    >
+      Login
+    </button>
+  </div>
+</div>
 
     );
 
