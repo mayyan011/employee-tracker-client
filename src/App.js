@@ -717,6 +717,7 @@ const saveAdminProfile = async () => {
 
 {/* PROFILE */}
 
+console.log(adminData);
 {activeTab === "profile" && (
 
   <div style={cardStyle}>
@@ -826,22 +827,20 @@ const saveAdminProfile = async () => {
           }}
         >
 
-          <img
-            src={
-              adminData?.profileImage
-                ? `https://employee-tracker-server-production.up.railway.app/uploads/${adminData.profileImage}`
-                : "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-            }
-            alt="admin"
-            style={{
-              width: "150px",
-              height: "150px",
-              borderRadius: "50%",
-              objectFit: "cover",
-              border:
-                "4px solid #2563eb",
-            }}
-          />
+<h3>
+  Image Path: {adminData?.profileImage}
+</h3>
+         <img
+  src={`https://employee-tracker-server-production.up.railway.app/${adminData.profileImage}`}
+  alt="profile"
+  style={{
+    width: "150px",
+    height: "150px",
+    borderRadius: "50%",
+    objectFit: "cover",
+    border: "4px solid #2563eb"
+  }}
+/>
 
         </div>
 
