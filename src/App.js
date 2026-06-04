@@ -6,7 +6,6 @@ import { FaUserCircle, FaEnvelope, FaLock } from "react-icons/fa";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function App() {
-console.log(adminData);
 
 const [isLogin, setIsLogin] =
   useState(false);
@@ -119,6 +118,7 @@ const [adminId, setAdminId] =
 
 const [adminData, setAdminData] =
   useState(null);  
+  console.log("ADMIN DATA:", adminData);
 
   /* =========================
    ATTENDANCE STATES
