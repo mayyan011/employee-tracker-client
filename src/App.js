@@ -3,6 +3,7 @@ import axios from "axios";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { FaUserCircle, FaEnvelope, FaLock } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function App() {
 
@@ -480,34 +481,47 @@ const loginAdmin = async () => {
     </div>
 
     <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        background: "#fff",
-        padding: "15px",
-        borderRadius: "15px",
-        marginBottom: "30px",
-      }}
-    >
-      <FaLock color="gray" />
+  style={{
+    display: "flex",
+    alignItems: "center",
+    background: "#fff",
+    padding: "15px",
+    borderRadius: "15px",
+    marginBottom: "30px",
+  }}
+>
+  <FaLock color="gray" />
 
-      <input
-        type="password"
-        placeholder="Enter Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        style={{
-          border: "none",
-          outline: "none",
-          marginLeft: "10px",
-          width: "100%",
-          fontSize: "16px",
-        }}
-      />
-    </div>
+  <input
+    type={showPassword ? "text" : "password"}
+    placeholder="Enter Password"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+    style={{
+      border: "none",
+      outline: "none",
+      marginLeft: "10px",
+      width: "100%",
+      fontSize: "16px",
+    }}
+  />
+
+  <span
+    onClick={() => setShowPassword(!showPassword)}
+    style={{
+      cursor: "pointer",
+    }}
+  >
+    {showPassword ? (
+      <FaEyeSlash color="gray" />
+    ) : (
+      <FaEye color="gray" />
+    )}
+  </span>
+</div>
 
     <button
-      onClick={loginUser}
+      onClick={loginAdmin}
       style={{
         width: "100%",
         padding: "15px",
