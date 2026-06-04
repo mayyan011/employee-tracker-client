@@ -6,6 +6,7 @@ import { FaUserCircle, FaEnvelope, FaLock } from "react-icons/fa";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function App() {
+console.log(adminData);
 
 const [isLogin, setIsLogin] =
   useState(false);
@@ -717,7 +718,6 @@ const saveAdminProfile = async () => {
 
 {/* PROFILE */}
 
-console.log(adminData);
 {activeTab === "profile" && (
 
   <div style={cardStyle}>
@@ -831,7 +831,7 @@ console.log(adminData);
   Image Path: {adminData?.profileImage}
 </h3>
          <img
-  src={`https://employee-tracker-server-production.up.railway.app/${adminData.profileImage}`}
+  src={`https://employee-tracker-server-production.up.railway.app/uploads/${adminData.profileImage}`}
   alt="profile"
   style={{
     width: "150px",
