@@ -827,9 +827,7 @@ const saveAdminProfile = async () => {
           }}
         >
 
-<h3>
-  Image Path: {adminData?.profileImage}
-</h3>
+
          <img
   src={`https://employee-tracker-server-production.up.railway.app/uploads/${adminData.profileImage}`}
   alt="profile"
