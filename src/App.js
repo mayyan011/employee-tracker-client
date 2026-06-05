@@ -5,6 +5,7 @@ import autoTable from "jspdf-autotable";
 import { FaUserCircle, FaEnvelope, FaLock } from "react-icons/fa";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
+
 function App() {
 
 const [isLogin, setIsLogin] =
@@ -28,6 +29,8 @@ const [activeTab, setActiveTab] =
   useState("profile");
   const [showProfileMenu, setShowProfileMenu] =
   useState(false);
+
+  const [mobileMenu, setMobileMenu] = useState(false);
 
 const [editProfileMode, setEditProfileMode] =
   useState(false);
@@ -174,6 +177,8 @@ const [
 
 const [leaveMonth, setLeaveMonth] =
   useState("");
+
+const isMobile = window.innerWidth <= 768;
 
   /* LOGIN */
 
@@ -638,14 +643,21 @@ const saveAdminProfile = async () => {
 
       {/* SIDEBAR */}
 
-      <div
-        style={{
-          width: "250px",
-          background: "#111827",
-          color: "white",
-          padding: "20px",
-        }}
-      >
+     {(!isMobile || mobileMenu) && (
+
+<div
+  style={{
+    width: isMobile ? "100%" : "250px",
+    background: "#0e56f1",
+    color: "white",
+    padding: "20px",
+    position: isMobile ? "fixed" : "relative",
+    height: "100vh",
+    zIndex: 999,
+    left: 0,
+    top: 0
+  }}
+>
 
         <h2
           style={{
@@ -663,56 +675,106 @@ const saveAdminProfile = async () => {
           }}
         >
 
-          <li
-            onClick={() =>
-              setActiveTab("profile")
-            }
-            style={menuStyle}
-          >
-            Admin Profile
-          </li>
+       <li
+  onClick={() => {
 
-          <li
-            onClick={() =>
-              setActiveTab("employees")
-            }
-            style={menuStyle}
-          >
-            Employee Management
-          </li>
+    setActiveTab("profile");
 
-          <li
-            onClick={() =>
-              setActiveTab("attendance")
-            }
-            style={menuStyle}
-          >
-            Attendance Management
-          </li>
+    if (isMobile) {
+      setMobileMenu(false);
+    }
 
-          <li
-            onClick={() =>
-              setActiveTab("leave")
-            }
-            style={menuStyle}
-          >
-            Leave Management
-          </li>
+  }}
+  style={menuStyle}
+>
+  Admin Profile
+</li>
+
+<li
+  onClick={() => {
+
+    setActiveTab("employees");
+
+    if (isMobile) {
+      setMobileMenu(false);
+    }
+
+  }}
+  style={menuStyle}
+>
+  Employee Management
+</li>
+
+<li
+  onClick={() => {
+
+    setActiveTab("attendance");
+
+    if (isMobile) {
+      setMobileMenu(false);
+    }
+
+  }}
+  style={menuStyle}
+>
+  Attendance Management
+</li>
+
+<li
+  onClick={() => {
+
+    setActiveTab("leave");
+
+    if (isMobile) {
+      setMobileMenu(false);
+    }
+
+  }}
+  style={menuStyle}
+>
+  Leave Management
+</li>
 
         </ul>
 
       </div>
+      )}
 
       {/* RIGHT SIDE */}
 
-      <div
-        style={{
-          flex: 1,
-          padding: "30px",
-          background: "#f3f4f6",
-          overflowY: "auto",
-        }}
-      >
+<div
+  style={{
+    flex: 1,
+    padding: isMobile ? "70px 15px 15px" : "30px",
+    background: "#f3f4f6",
+    overflowY: "auto",
+  }}
+>
+
+{isMobile && (
+
+  <button
+    onClick={() =>
+      setMobileMenu(!mobileMenu)
+    }
+    style={{
+      position: "fixed",
+      top: "15px",
+      left: "15px",
+      zIndex: 1000,
+      background: "#2563eb",
+      color: "#fff",
+      border: "none",
+      padding: "10px 15px",
+      borderRadius: "8px",
+      fontSize: "22px",
+      cursor: "pointer"
+    }}
+  >
+    ☰
+  </button>
+
+)}
 
         {/* PROFILE */}
 
