@@ -1883,33 +1883,37 @@ const saveAdminProfile = async () => {
 
                   <tbody>
 
-                    {attendanceData
-                      .filter(
-                        (att) =>
-                          att.employee ===
-                          emp.employeeName
-                      )
-                      .map(
-                        (
-                          att,
-                          index
-                        ) => (
+                  {attendanceData
+  .filter(
+    (att) =>
+      att.employeeName ===
+      emp.employeeName
+  )
+  .map(
+    (
+      att,
+      index
+    ) => (
 
                           <tr
                             key={index}
                           >
 
-                            <td style={tableStyle}>
-                              {att.date}
-                            </td>
+                           <td style={tableStyle}>
+                           {att.checkInTime?.split(",")[0]}
+                           </td>
 
-                            <td style={tableStyle}>
-                              {att.checkIn}
-                            </td>
+                           <td style={tableStyle}>
+                           {att.checkInTime}
+                          </td>
 
-                            <td style={tableStyle}>
-                              {att.checkOut}
-                            </td>
+                          <td style={tableStyle}>
+                          {att.checkOutTime || "Not Checked Out"}
+                          </td>
+
+                          <td style={tableStyle}>
+                          {att.city || "Unknown"}
+                          </td>
 
                           </tr>
 
