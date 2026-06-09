@@ -1912,10 +1912,6 @@ const saveAdminProfile = async () => {
                           </td>
 
                           <td style={tableStyle}>
-                           {att.workinghours}
-                          </td>
-
-                          <td style={tableStyle}>
                           {att.city || "Unknown"}
                           </td>
 
