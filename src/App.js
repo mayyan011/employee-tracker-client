@@ -1843,86 +1843,97 @@ const saveAdminProfile = async () => {
                   {emp.employeeName}
                 </summary>
 
-                <table
-                  style={{
-                    width: "100%",
-                    marginTop: "15px",
-                    borderCollapse:
-                      "collapse",
-                  }}
-                >
+                <div style={{ marginTop: "20px" }}>
 
-                  <thead>
-
-                    <tr
-                      style={{
-                        background:
-                          "#2563eb",
-                        color: "white",
-                      }}
-                    >
-
-                      <th style={tableStyle}>
-                        Date
-                      </th>
-
-                      <th style={tableStyle}>
-                        Check In
-                      </th>
-
-                      <th style={tableStyle}>
-                        Check Out
-                      </th>
-                      <th style={tableStyle}>
-                        Location
-                      </th>
-
-                    </tr>
-
-                  </thead>
-
-                  <tbody>
-
-                  {attendanceData
+{attendanceData
   .filter(
     (att) =>
       att.employeeName ===
       emp.employeeName
   )
-  .map(
-    (
-      att,
-      index
-    ) => (
+  .map((att, index) => (
 
-                          <tr
-                            key={index}
-                          >
+    <div
+      key={index}
+      style={{
+        background: "#f9fafb",
+        padding: "20px",
+        borderRadius: "10px",
+        marginBottom: "20px",
+        border: "1px solid #ddd",
+      }}
+    >
 
-                           <td style={tableStyle}>
-                           {att.checkInTime?.split(",")[0]}
-                           </td>
+      <h3 style={{ color: "#2563eb" }}>
+        CHECK IN
+      </h3>
 
-                           <td style={tableStyle}>
-                           {att.checkInTime}
-                          </td>
+      <p>
+        <strong>Date:</strong>{" "}
+        {new Date(
+          att.checkInTime
+        ).toLocaleDateString()}
+      </p>
 
-                          <td style={tableStyle}>
-                          {att.checkOutTime || "Not Checked Out"}
-                          </td>
+      <p>
+        <strong>Time:</strong>{" "}
+        {new Date(
+          att.checkInTime
+        ).toLocaleTimeString()}
+      </p>
 
-                          <td style={tableStyle}>
-                          {att.city || "Unknown"}
-                          </td>
+      <p>
+        <strong>Location:</strong>{" "}
+        {att.city || "Unknown"}
+      </p>
 
-                          </tr>
+      <hr />
 
-                        )
-                      )}
+      <h3 style={{ color: "#16a34a" }}>
+        CHECK OUT
+      </h3>
 
-                  </tbody>
+      <p>
+        <strong>Date:</strong>{" "}
+        {att.checkOutTime
+          ? new Date(
+              att.checkOutTime
+            ).toLocaleDateString()
+          : "-"}
+      </p>
 
-                </table>
+      <p>
+        <strong>Time:</strong>{" "}
+        {att.checkOutTime
+          ? new Date(
+              att.checkOutTime
+            ).toLocaleTimeString()
+          : "Not Checked Out"}
+      </p>
+
+      <p>
+        <strong>Location:</strong>{" "}
+        {att.city || "Unknown"}
+      </p>
+
+      <hr />
+
+      <h3 style={{ color: "#dc2626" }}>
+        WORKING HOURS
+      </h3>
+
+      <p>
+        <strong>
+          {att.workingHours ||
+            "Still Working"}
+        </strong>
+      </p>
+
+    </div>
+
+))}
+
+</div>
 
               </details>
 
