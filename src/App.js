@@ -38,6 +38,7 @@ const [editProfileMode, setEditProfileMode] =
   useEffect(() => {
 
   fetchLeaves();
+  getAttendance();
 
 }, []);
 
@@ -142,7 +143,32 @@ const [
   setSelectedMonth,
 ] = useState("");
 
-const [attendanceData] = useState([]);
+const [
+  attendanceData,
+  setAttendanceData,
+] = useState([]);
+console.log(attendanceData);
+
+const getAttendance = async () => {
+
+  try {
+
+    const response = await axios.get(
+      "https://employee-tracker-server-production.up.railway.app/api/attendance/all"
+    );
+
+    setAttendanceData(
+      response.data
+    );
+
+  } catch (error) {
+
+    console.log(error);
+
+  }
+
+};
+
 /* =========================
    LEAVE STATES
 ========================= */
