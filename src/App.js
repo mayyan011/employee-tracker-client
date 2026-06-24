@@ -139,8 +139,8 @@ const [
 ] = useState("");
 
 const [
-  selectedMonth,
-  setSelectedMonth,
+  selectedDate,
+  setSelectedDate,
 ] = useState("");
 
 const [
@@ -1765,28 +1765,39 @@ const saveAdminProfile = async () => {
           Attendance Record
         </h2>
 
-        <input
-          type="text"
-          placeholder="Employee Name (Optional)"
-          value={selectedEmployeeFilter}
-          onChange={(e) =>
-            setSelectedEmployeeFilter(
-              e.target.value
-            )
-          }
-          style={inputStyle}
-        />
+      <select
+  value={selectedEmployeeFilter}
+  onChange={(e) =>
+    setSelectedEmployeeFilter(e.target.value)
+  }
+  style={inputStyle}
+>
 
-        <input
-          type="month"
-          value={selectedMonth}
-          onChange={(e) =>
-            setSelectedMonth(
-              e.target.value
-            )
-          }
-          style={inputStyle}
-        />
+  <option value="">
+    Select Employee
+  </option>
+
+  {employees.map((emp) => (
+
+    <option
+      key={emp._id}
+      value={emp.employeeName}
+    >
+      {emp.employeeName}
+    </option>
+
+  ))}
+
+</select>
+
+       <input
+  type="date"
+  value={selectedDate}
+  onChange={(e) =>
+    setSelectedDate(e.target.value)
+  }
+  style={inputStyle}
+/>
 
         <button
           style={greenButton}
@@ -1846,11 +1857,32 @@ const saveAdminProfile = async () => {
                 <div style={{ marginTop: "20px" }}>
 
 {attendanceData
-  .filter(
-    (att) =>
+  .filter((att) => {
+
+    const employeeMatch =
+      selectedEmployeeFilter === ""
+        ? true
+        : att.employeeName ===
+          selectedEmployeeFilter;
+
+    const dateMatch =
+      selectedDate === ""
+        ? true
+        : new Date(
+            att.checkInTime
+          )
+            .toISOString()
+            .split("T")[0] ===
+          selectedDate;
+
+    return (
       att.employeeName ===
-      emp.employeeName
-  )
+        emp.employeeName &&
+      employeeMatch &&
+      dateMatch
+    );
+
+  })
   .map((att, index) => (
 
     <div
