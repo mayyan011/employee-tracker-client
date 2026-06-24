@@ -1777,7 +1777,13 @@ const saveAdminProfile = async () => {
     Select Employee
   </option>
 
-  {employees.map((emp) => (
+  {employees
+  .filter(
+    (emp) =>
+      emp.employeeName &&
+      emp.employeeName.trim() !== ""
+  )
+  .map((emp) => (
 
     <option
       key={emp._id}
@@ -1786,7 +1792,7 @@ const saveAdminProfile = async () => {
       {emp.employeeName}
     </option>
 
-  ))}
+))}
 
 </select>
 
