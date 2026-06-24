@@ -2022,16 +2022,6 @@ const saveAdminProfile = async () => {
 
         </select>
 
-        <input
-          type="month"
-          value={selectedMonth}
-          onChange={(e) =>
-            setSelectedMonth(
-              e.target.value
-            )
-          }
-          style={inputStyle}
-        />
 
         <button
   onClick={downloadPDF}
